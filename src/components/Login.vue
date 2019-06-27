@@ -5,6 +5,10 @@
         <div v-if="response.status == 'error'" class="alert alert-danger">
           {{response.message}}
         </div>
+        <div v-if="loader" class="spinner-border text-warning" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+
         <h4>Login</h4>
         <div class="form-group">
           <label for="">Email</label>
@@ -30,7 +34,7 @@
      data(){
        return{
         response:{},
-
+        loader:'',
         form:{
           email:'',
           password:''
@@ -43,17 +47,25 @@
       },
 
       postLogin(){
-        //console.log(this.form)
+        this.loader=true
         this.login()
 
-        if (this.response.status == 'success') {
-          this.$router.push({name:'dashboard'})
-        }
+        //delay login Event 
+        setInterval(()=>{
+          this.$emit('loginEvent')
+        },3000)
+
       }
     },
 
     created(){
-
+     this.$on('loginEvent',()=>{
+       console.log('in event')
+       if (this.response.status == 'success') {
+         console.log('redirecting')
+         this.$router.push({name:'dashboard'})
+       }
+     })
     }
   }
 </script>

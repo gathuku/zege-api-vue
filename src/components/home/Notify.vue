@@ -1,0 +1,17 @@
+<template >
+  <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header bg-primary"> <strong> Dashboard</strong></div>
+
+                  <div class="card-body">
+
+
+                    notify
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</template>
