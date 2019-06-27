@@ -2,9 +2,21 @@
   <div class="containder">
     <div class="text-center mt-4">
       <h3 class="text-primary">Zege Application</h3>
-      <button class="btn btn-primary" type="button" name="button">Register</button>
-      <button class="btn btn-primary" type="button" name="button">Login</button>
-    </div>
+      <router-link to="/register">
+          <button class="btn btn-primary" type="button" name="button">Register</button>
+      </router-link>
+
+          <router-link to="/login">
+              <button class="btn btn-primary" type="button" name="button">Login</button>
+         </router-link>
+
+
+         <div class="content-justify-center">
+           <router-view></router-view>
+         </div>
+
+     </div>
+
 
   </div>
 </template>
