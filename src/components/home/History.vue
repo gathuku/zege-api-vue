@@ -25,6 +25,7 @@
     },
 
     beforeCreate(){
+
       this.axios.defaults.headers.common = {'Authorization': `Bearer ${localStorage.token}`}
     },
 

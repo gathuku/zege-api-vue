@@ -33,9 +33,11 @@
 
     },
     beforeCreate(){
+
       this.axios.defaults.headers.common = {'Authorization': `Bearer ${localStorage.token}`}
     },
     created(){
+  
       this.axios.get('notifications').then(({data})=>{this.notifies=data})
     }
   }
