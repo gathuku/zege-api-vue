@@ -9,6 +9,8 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 
 Vue.use(VueAxios, axios)
+axios.defaults.baseURL = 'http://127.0.0.1:3000/v1/'
+//axios.defaults.headers.common = {'Authorization': `Bearer ${this.accessToken}`}
 
 Vue.use(VueRouter);
 
@@ -20,5 +22,6 @@ Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
-  router
+  router,
+
 }).$mount('#app')

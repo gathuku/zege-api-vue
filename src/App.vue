@@ -1,5 +1,5 @@
 <template >
-  <div class="containder">
+  <div class="containder" id="app">
     <div class="text-center mt-4">
       <h3 class="text-primary">Zege Application</h3>
       <router-link to="/register">

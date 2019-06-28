@@ -50,7 +50,7 @@
         this.loader=true
         this.login()
 
-        //delay login Event 
+        //delay login Event
         setInterval(()=>{
           this.$emit('loginEvent')
         },3000)
@@ -60,9 +60,9 @@
 
     created(){
      this.$on('loginEvent',()=>{
-       console.log('in event')
+
        if (this.response.status == 'success') {
-         console.log('redirecting')
+         localStorage.token=this.response.token
          this.$router.push({name:'dashboard'})
        }
      })
