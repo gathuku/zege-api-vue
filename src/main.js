@@ -7,10 +7,15 @@ import VueRouter from 'vue-router';
 import {routes} from './router';
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import Moment from 'moment'
 
 Vue.use(VueAxios, axios)
 axios.defaults.baseURL = 'http://127.0.0.1:3000/v1/'
 //axios.defaults.headers.common = {'Authorization': `Bearer ${this.accessToken}`}
+//Date filter
+Vue.filter('dateFilter',function(createdAt){
+  return Moment(createdAt).format('MMMM Do YYYY')
+})
 
 Vue.use(VueRouter);
 

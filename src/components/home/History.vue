@@ -8,10 +8,28 @@
                   <div class="card-body">
 
 
-                    History 
+                    History
                   </div>
               </div>
           </div>
       </div>
   </div>
 </template>
+
+<script>
+  export default{
+    data(){
+      return{
+       history:{}
+      }
+    },
+
+    beforeCreate(){
+      this.axios.defaults.headers.common = {'Authorization': `Bearer ${localStorage.token}`}
+    },
+
+    created(){
+     this.axios.get('history').then(({data})=>{this.history=data})
+    }
+  }
+</script>

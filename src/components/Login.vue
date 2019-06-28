@@ -63,6 +63,7 @@
 
        if (this.response.status == 'success') {
          localStorage.token=this.response.token
+         this.$parent.status=false
          this.$router.push({name:'dashboard'})
        }
      })
