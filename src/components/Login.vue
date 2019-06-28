@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="text-center mt-2">
+    <div class="row justify-content-center mt-2">
       <div class="col-md-4">
         <div v-if="response.status == 'error'" class="alert alert-danger">
           {{response.message}}
@@ -43,7 +43,7 @@
      },
     methods:{
       login(){
-        this.axios.post('http://127.0.0.1:3000/v1/sessions',this.form).then(({data}) => {this.response=data})
+        this.axios.post('sessions',this.form).then(({data}) => {this.response=data})
       },
 
       postLogin(){
