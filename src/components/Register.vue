@@ -23,7 +23,7 @@
         </div>
         <div class="form-group">
 
-          <input @click="postRegister" class="btn btn-primary" type="submit" name="" value="Login">
+          <input @click="postRegister" class="btn btn-primary" type="submit" name="" value="Register">
         </div>
       </div>
     </div>

@@ -36,6 +36,7 @@ methods:{
       this.response=data
       //Clear Token
       localStorage.token=null
+      this.$parent.status=false
       //redirect
       this.$router.push({name:'Login'})
     })

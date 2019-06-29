@@ -12,7 +12,7 @@ import Notify from './components/home/Notify.vue'
 import History from './components/home/History.vue'
 
 export const routes=[
-  {path:'',name:'welcome', component:App},
+  {path:'',name:'welcome', component:Login},
   {path:'/login',name:'Login',component:Login},
   {path:'/register',component:Register},
   {path:'/home', component:Dashboard, children:[
