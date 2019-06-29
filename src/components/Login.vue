@@ -12,7 +12,7 @@
         <h4>Login</h4>
         <div class="form-group" :class="{error: validation.hasError('form.email')}">
           <label for="">Email</label>
-          <input v-model="form.email" class="form-control" type="text" name="" value="">
+          <input v-model="form.email" class="form-control" type="text" name="" value="" autofocus>
           <div class="message text-danger">{{ validation.firstError('form.email') }}</div>
         </div>
         <div class="form-group" :class="{error: validation.hasError('form.password')}">

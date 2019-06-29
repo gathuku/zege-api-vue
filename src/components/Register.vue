@@ -8,7 +8,7 @@
         <h4>Register</h4>
         <div class="form-group">
           <label for="">Email</label>
-          <input v-model="form.email" class="form-control" type="text" name="" value="">
+          <input v-model="form.email" class="form-control" type="text" name="" value="" autofocus>
           <div class="message text-danger">{{ validation.firstError('form.email') }}</div>
         </div>
         <div class="form-group">
