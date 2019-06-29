@@ -9,6 +9,8 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Moment from 'moment'
 
+
+
 Vue.use(VueAxios, axios)
 //axios.defaults.baseURL = 'https://zege-api.herokuapp.com/v1/'
 axios.defaults.baseURL = 'http://localhost:3000/v1/'

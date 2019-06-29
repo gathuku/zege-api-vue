@@ -44,6 +44,7 @@ methods:{
 beforeCreate(){
 
   if (localStorage.token === 'null') {
+    this.$parent.status=false
     this.$router.push({name:'Login'})
   }
   this.axios.defaults.headers.common = {'Authorization': `Bearer ${localStorage.token}`}

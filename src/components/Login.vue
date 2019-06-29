@@ -10,13 +10,15 @@
         </div>
 
         <h4>Login</h4>
-        <div class="form-group">
+        <div class="form-group" :class="{error: validation.hasError('form.email')}">
           <label for="">Email</label>
           <input v-model="form.email" class="form-control" type="text" name="" value="">
+          <div class="message text-danger">{{ validation.firstError('form.email') }}</div>
         </div>
-        <div class="form-group">
+        <div class="form-group" :class="{error: validation.hasError('form.password')}">
           <label for="">Password</label>
           <input v-model="form.password" class="form-control" type="password" name="" value="">
+            <div class="message text-danger">{{ validation.firstError('form.password') }}</div>
         </div>
         <div class="form-group">
 
@@ -30,6 +32,11 @@
 
 </template>
 <script>
+import Vue from 'vue';
+import SimpleVueValidation from 'simple-vue-validator';
+const Validator = SimpleVueValidation.Validator;
+
+Vue.use(SimpleVueValidation);
   export default{
      data(){
        return{
@@ -41,9 +48,22 @@
         }
        }
      },
+
+     validators: {
+        'form.email': function(value) {
+          return Validator.value(value).required().email();
+        },
+
+        'form.password': function(value) {
+          return Validator.value(value).required().minLength(6)
+        },
+      },
     methods:{
       login(){
-        this.axios.post('sessions',this.form).then(({data}) => {this.response=data})
+        this.axios.post('sessions',this.form).then(({data}) => {
+          this.response=data
+
+        })
       },
 
       postLogin(){
@@ -64,6 +84,7 @@
        if (this.response.status == 'success') {
          localStorage.token=this.response.token
          this.$parent.status=false
+         this.loader=false
          this.$router.push({name:'dashboard'})
        }
      })

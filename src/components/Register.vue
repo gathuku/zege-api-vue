@@ -9,14 +9,17 @@
         <div class="form-group">
           <label for="">Email</label>
           <input v-model="form.email" class="form-control" type="text" name="" value="">
+          <div class="message text-danger">{{ validation.firstError('form.email') }}</div>
         </div>
         <div class="form-group">
           <label for="">Password</label>
           <input v-model="form.password" class="form-control" type="password" name="" value="">
+          <div class="message text-danger">{{ validation.firstError('form.password') }}</div>
         </div>
         <div class="form-group">
           <label for="">Confirm Password</label>
           <input v-model="form.password_confirmation" class="form-control" type="password" name="" value="">
+         <div class="message text-danger">{{ validation.firstError('form.password_confirmation') }}</div>
         </div>
         <div class="form-group">
 
@@ -29,6 +32,9 @@
 
 </template>
 <script>
+import Vue from 'vue';
+import SimpleVueValidation from 'simple-vue-validator';
+const Validator = SimpleVueValidation.Validator;
   export default{
      data(){
        return{
@@ -41,6 +47,23 @@
         }
        }
      },
+
+    //Validation
+    validators: {
+       'form.email': function(value) {
+         return Validator.value(value).required().email();
+       },
+
+       'form.password': function(value) {
+         return Validator.value(value).required().minLength(6)
+       },
+       'form.password_confirmation, form.password': function (password_confirmation, password) {
+        if (this.submitted || this.validation.isTouched('form.password_confirmation')) {
+          return Validator.value(password_confirmation).required().match(password);
+        }
+     }
+   },
+
     methods:{
       register(){
         this.axios.post('users',this.form).then(({data}) => {this.response=data})
