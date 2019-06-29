@@ -13,7 +13,7 @@
           <router-link :to="{name:'topup'}" class="nav-item nav-link">Top up</router-link>
           <router-link :to="{name:'transfer'}" class="nav-item nav-link ">Transfer</router-link>
           <router-link :to="{name:'notify'}"  class="nav-item nav-link" href="#">Nofification</router-link>
-          <a class="nav-item nav-link">Logout</a>
+          <a @click="logout" class="nav-item nav-link">Logout</a>
         </div>
       </div>
     </nav>
@@ -28,16 +28,26 @@ export default{
 data(){
   return{
   response:{}
-  },
-  methods:{
-    logout(){
-      this.axios.delete('sessions').then(({data})=>{this.response=data})
-    }
-  },
-  beforeCreate(){
-    this.axios.defaults.headers.common = {'Authorization': `Bearer ${localStorage.token}`}
-  },
-}
+  }
+},
+methods:{
+  logout(){
+    this.axios.delete('sessions').then(({data})=>{
+      this.response=data
+      //Clear Token
+      localStorage.token=null
+      //redirect
+      this.$router.push({name:'Login'})
+    })
+  }
+},
+beforeCreate(){
+
+  if (localStorage.token === 'null') {
+    this.$router.push({name:'Login'})
+  }
+  this.axios.defaults.headers.common = {'Authorization': `Bearer ${localStorage.token}`}
+},
 }
 
 </script>
