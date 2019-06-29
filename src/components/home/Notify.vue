@@ -11,7 +11,7 @@
                       <th>Date</th>
                       <tbody>
                         <tr v-for="notify in notifies"  :key="notify.id">
-                          <td>{{notify.user_id}} sent {{notify.amount}} to your account</td>
+                          <td>User with id {{notify.user_id}} sent {{notify.amount}} to your account</td>
                           <td>{{notify.created_at | dateFilter}}</td>
                         </tr>
 
