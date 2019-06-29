@@ -70,13 +70,16 @@ const Validator = SimpleVueValidation.Validator;
       },
 
       postRegister(){
-        this.loader=true
-        this.register()
+        if (this.form.email != '' && this.form.password !='' && this.form.password_confirmation) {
+          this.loader=true
+          this.register()
 
-        //delay login Event
-        setInterval(()=>{
-          this.$emit('registerEvent')
-        },3000)
+          //delay login Event
+          setInterval(()=>{
+            this.$emit('registerEvent')
+          },3000)
+        }
+
 
       }
     },

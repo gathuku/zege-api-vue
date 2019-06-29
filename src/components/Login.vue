@@ -67,24 +67,27 @@ Vue.use(SimpleVueValidation);
       },
 
       postLogin(){
-        this.loader=true
-        this.login()
+        if (this.form.email != '' && this.form.password !='') {
+          this.loader=true
+          this.login()
 
-        //delay login Event
-        setInterval(()=>{
-          this.$emit('loginEvent')
-        },3000)
+          //delay login Event
+          setInterval(()=>{
+            this.$emit('loginEvent')
+          },3000)
+        }
+
 
       }
     },
 
     created(){
      this.$on('loginEvent',()=>{
-
+        this.loader=false
        if (this.response.status == 'success') {
          localStorage.token=this.response.token
          this.$parent.status=false
-         this.loader=false
+
          this.$router.push({name:'dashboard'})
        }
      })
