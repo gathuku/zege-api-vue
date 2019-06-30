@@ -79,6 +79,7 @@ const Validator = SimpleVueValidation.Validator;
 
           //delay login Event
           setInterval(()=>{
+            this.loader=false
             this.$emit('registerEvent')
           },3000)
         }
