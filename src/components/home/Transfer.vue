@@ -10,6 +10,10 @@
                       {{response.sentTo}}
                       {{response.balance}}
                     </div>
+                    <div v-if="response.status == 'error'" class="alert alert-danger">
+                      {{response.message}}
+
+                    </div>
                     <p class="text-danger">You can only transfer to registered users</p>
                     <div class="form-group col-md-5">
                      <label for="">Enter user Email </label>

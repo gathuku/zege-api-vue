@@ -3,7 +3,7 @@
       <div class="row justify-content-center">
           <div class="col-md-8">
               <div class="card">
-                  <div class="card-header bg-primary"> <strong> Notications</strong></div>
+                  <div class="card-header bg-primary"> <strong> Notifications</strong></div>
 
                   <div class="card-body">
                     <table class="table">
@@ -11,7 +11,7 @@
                       <th>Date</th>
                       <tbody>
                         <tr v-for="notify in notifies"  :key="notify.id">
-                          <td>User with id {{notify.user_id}} sent {{notify.amount}} to your account</td>
+                          <td>{{notify.user_id}} sent {{notify.amount}} to your account</td>
                           <td>{{notify.created_at | dateFilter}}</td>
                         </tr>
 
