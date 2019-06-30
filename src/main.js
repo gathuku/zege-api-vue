@@ -12,8 +12,8 @@ import Moment from 'moment'
 
 
 Vue.use(VueAxios, axios)
-//axios.defaults.baseURL = 'https://zege-api.herokuapp.com/v1/'
-axios.defaults.baseURL = 'http://localhost:3000/v1/'
+axios.defaults.baseURL = 'https://zege-api.herokuapp.com/v1/'
+//axios.defaults.baseURL = 'http://localhost:3000/v1/'
 //axios.defaults.headers.common = {'Authorization': `Bearer ${this.accessToken}`}
 //Date filter
 Vue.filter('dateFilter',function(createdAt){
