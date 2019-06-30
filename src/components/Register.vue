@@ -5,6 +5,9 @@
         <div v-if="loader" class="spinner-border text-warning" role="status">
           <span class="sr-only">Loading...</span>
         </div>
+        <div v-if="response.status == 'error'" class="alert alert-danger">
+          {{response.message}}
+        </div>
         <h4>Register</h4>
         <div class="form-group">
           <label for="">Email</label>
