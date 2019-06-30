@@ -1,29 +1,11 @@
 # zege
 
-## Project setup
-```
-npm install
-```
+## Technologies used
+- Vue.js -Progressive Javascript framework
+- Vue Router - SPA
+- Axios - for http request
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Sample Screens
+![](/public/z.png)
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![](/public/z1.png)

@@ -2,13 +2,16 @@
   <div class="containder" id="app">
     <div v-if="this.status" class="text-center mt-4">
       <h3 class="text-primary">Zege Application</h3>
-      <router-link to="/register">
-          <button class="btn btn-primary" type="button" name="button">Register</button>
-      </router-link>
+      <div class="container">
+        <router-link to="/register">
+            <button class="btn btn-primary ml-1" type="button" name="button">Register</button>
+            </router-link>
 
-          <router-link to="/login">
-              <button class="btn btn-primary" type="button" name="button">Login</button>
-         </router-link>
+            <router-link to="/login">
+                <button class="btn btn-primary ml-1" type="button" name="button">Login</button>
+           </router-link>
+        </div>
+
 
           <br> <br>
      </div>

@@ -10,14 +10,20 @@
                       {{response.sentTo}}
                       {{response.balance}}
                     </div>
+                    <div v-if="response.status == 'error'" class="alert alert-danger">
+                      {{response.message}}
+
+                    </div>
                     <p class="text-danger">You can only transfer to registered users</p>
                     <div class="form-group col-md-5">
                      <label for="">Enter user Email </label>
                    <input v-model="form.email" class="form-control" type="text" name="madeTo" value="" required>
+                   <div class="message text-danger">{{ validation.firstError('form.email') }}</div>
                    </div>
                    <div class="form-group col-md-5">
                      <label for="">Enter Amount</label>
                    <input v-model="form.amount" class="form-control" type="text" name="amount" value="" required>
+                   <div class="message text-danger">{{ validation.firstError('form.amount') }}</div>
                    </div>
                    <div class="form-group">
                    <button @click="postTransfer" class="btn btn-primary" type="submit" name="button">Submit</button>
@@ -29,6 +35,9 @@
   </div>
 </template>
 <script>
+import Vue from 'vue';
+import SimpleVueValidation from 'simple-vue-validator';
+const Validator = SimpleVueValidation.Validator;
   export default{
     data(){
       return{
@@ -39,6 +48,18 @@
       }
       }
     },
+
+    validators: {
+       'form.email': function(value) {
+         return Validator.value(value).required().email();
+       },
+       'form.amount': function(value) {
+         return Validator.value(value).required().digit().lessThan(100000);
+       },
+
+     },
+
+
     methods:{
       postTransfer(){
         this.axios.post('transaction/transfer',this.form).then(({data})=>{this.response=data})
